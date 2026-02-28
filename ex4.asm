@@ -31,3 +31,15 @@ name5 dw 1000
 ;dd is 4 bytes
 name6 dd 0x12345678
 name7 dd 100000
+
+;; na stack vc sempre move 4 bytes at a time, entao seria algo tipo:
+;; vamos dizer q a stack vai de 00 a 28 pulando 4, a esp comeca em 28 e a cada push
+;; ela desce 4 no array da stack.
+
+; comecou na 28
+push 1234 ; esp 24
+push 8765 ; esp 20
+push 246 ; esp 16
+sub esp, 4 ; movemos na mao pra 12 , sem usar push !
+mov [esp], dword 357 ; ou seja alteramos o valor da casa atual da stack, que é a 12 para 357, e como ela mexe de 4 em 4 bytes por operacao entao temos q usar a dword keyword.
+pop eax ; voltamos pra 16 !
