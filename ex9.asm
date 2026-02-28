@@ -6,6 +6,7 @@ extern printf ; meio q diz q printf é algo externo q vai ser utilizado.
 section .data
  msg db "Testing %i...", 0x0a, 0x00
 
+section .text
 main:
  push ebp
  mov ebp, esp
